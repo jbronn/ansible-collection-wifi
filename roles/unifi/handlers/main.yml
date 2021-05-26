@@ -1,0 +1,8 @@
+---
+- name: 'restart unifi'
+  service:
+    name: "{{ unifi_service }}"
+    state: restarted
+  tags:
+    - unifi
+    - unifi-config

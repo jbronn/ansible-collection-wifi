@@ -1,0 +1,21 @@
+---
+- name: "configure mongodb {{ mongodb_version }} apt repository gpg key"
+  copy:
+    src: "mongodb-org-{{ mongodb_version }}.gpg"
+    dest: "/etc/apt/trusted.gpg.d/mongodb-org-{{ mongodb_version }}.gpg"
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: "configure mongodb {{ mongodb_version }} apt repository"
+  apt_repository:
+    repo: |
+      deb {{ mongodb_apt_uri }} {{ mongodb_apt_suites | join(' ') }} {{ mongodb_apt_components | join(' ') }}
+    state: present
+    filename: "mongodb-org-{{ mongodb_version }}"
+    mode: '0644'
+
+- name: 'install mongodb'
+  apt:
+    name: "{{ mongodb_packages }}"
+    state: present

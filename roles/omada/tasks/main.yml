@@ -1,0 +1,22 @@
+---
+- name: 'install omada packages'
+  import_tasks: install.yml
+  tags:
+    - omada
+    - omada-install
+
+- name: 'disable mongodb service'
+  service:
+    name: mongodb
+    state: stopped
+    enabled: false
+  tags:
+    - omada
+
+- name: 'configure omada service'
+  service:
+    name: "{{ omada_service }}"
+    state: "{{ omada_service_state }}"
+    enabled: "{{ omada_service_enabled }}"
+  tags:
+    - omada

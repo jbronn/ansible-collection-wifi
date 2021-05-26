@@ -1,0 +1,10 @@
+---
+- name: 'restart mongodb'
+  service:
+    name: "{{ mongodb_service }}"
+    state: restarted
+  tags:
+    - mongodb
+  when:
+    - ansible_virtualization_type != 'docker'
+    - mongodb_service_state != 'stopped'

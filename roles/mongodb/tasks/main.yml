@@ -1,0 +1,16 @@
+---
+- name: 'install mongodb on debian platforms'
+  import_tasks: debian.yml
+  tags:
+    - mongodb
+  when: ansible_os_family == 'Debian'
+
+- name: 'configure mongodb service'
+  service:
+    name: "{{ mongodb_service }}"
+    state: "{{ mongodb_service_state }}"
+    enabled: "{{ mongodb_service_enabled }}"
+  when:
+    - ansible_virtualization_type != 'docker'
+  tags:
+    - mongodb

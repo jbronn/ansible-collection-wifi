@@ -1,0 +1,71 @@
+---
+omada_version: 4.3.5
+omada_version_defaults:
+  4.3.5:
+    base_path: 2021/202105/20210507
+    deb_checksum: 918a065b71f312fb3ecd85fea94ccfa8079f42f54a113a8187976625d79b7459
+    tar_checksum: c805cb0ff031b01c7af646a279cd6bb3df4617afbae5fa5eee9afcf6f9d2dd46
+  4.2.11:
+    base_path: 2021/202102/20210209
+    deb_checksum: ee09d614ccb9ef6305732fc9184bf10ca65bd5e3d02c04e6f3ba679d0cedf261
+    tar_checksum: 22245035b9ff9684d571a6c75b63171a5fc1a777515f1264ee187d8b8abd5199
+
+omada_arch: x64
+omada_base_url: https://static.tp-link.com
+omada_base_path: "{{ omada_version_defaults[omada_version].base_path }}"
+omada_basename: "Omada_SDN_Controller_v{{ omada_version }}_linux_{{ omada_arch }}"
+omada_deb_basename: "Omada_SDN_Controller_v{{ omada_version }}_linux_{{ omada_arch }}.deb"
+omada_deb_checksum: "sha256:{{ omada_version_defaults[omada_version].deb_checksum }}"
+omada_deb_url: "{{ omada_base_url }}/{{ omada_base_path }}/{{ omada_deb_basename }}"
+omada_tar_basename: "{{ omada_basename }}.tar.gz"
+omada_tar_checksum: "sha256:{{ omada_version_defaults[omada_version].tar_checksum }}"
+omada_tar_url: "{{ omada_base_url }}/{{ omada_base_path }}/{{ omada_tar_basename }}"
+
+omada_root: /opt/tplink/EAPController
+omada_keystore_dir: "{{ omada_root }}/keystore"
+omada_keystore_file: "{{ omada_keystore_dir }}/eap.keystore"
+omada_properties_dir: "{{ omada_root }}/properties"
+omada_config_file: "{{ omada_properties_dir }}/omada.properties"
+omada_log_config_file: "{{ omada_properties_dir }}/log4j2.properties"
+
+omada_base_packages:
+  - curl
+  - jsvc
+  - openjdk-8-jre-headless
+omada_extra_packages: []
+omada_packages: "{{ omada_base_packages + omada_extra_packages }}"
+
+omada_user: omada
+omada_group: omada
+
+omada_service: tpeap
+omada_service_state: started
+omada_service_enabled: true
+
+omada_mongodb_port: 27017
+omada_mongodb_proto: tcp
+omada_discover_port: 29810
+omada_discover_proto: udp
+omada_manage_port: 29811
+omada_manage_proto: tcp
+omada_adopt_port: 29812
+omada_adopt_proto: tcp
+omada_upgrade_port: 29813
+omada_upgrade_proto: tcp
+omada_http_port: 8088
+omada_http_proto: tcp
+omada_https_port: 8043
+omada_https_proto: tcp
+
+omada_firewalld_services:
+  omada:
+    state: present
+    description: 'Enable this if you want to run a Omada SDN Controller.'
+    short: 'Omada SDN Controller Service'
+    ports:
+      - "{{ omada_http_port }}/{{ omada_http_proto }}"
+      - "{{ omada_https_port }}/{{ omada_https_proto }}"
+      - "{{ omada_discover_port }}/{{ omada_discover_proto }}"
+      - "{{ omada_manage_port }}/{{ omada_manage_proto }}"
+      - "{{ omada_adopt_port }}/{{ omada_adopt_proto }}"
+      - "{{ omada_upgrade_port }}/{{ omada_upgrade_proto }}"

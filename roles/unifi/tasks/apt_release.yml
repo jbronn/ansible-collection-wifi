@@ -1,0 +1,20 @@
+---
+- name: 'configure unifi apt repository gpg key'
+  copy:
+    src: unifi-repo.gpg
+    dest: /etc/apt/trusted.gpg.d/unifi-repo.gpg
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: 'configure unifi apt repository'
+  apt_repository:
+    repo: |
+      deb {{ unifi_apt_uri }} {{ unifi_apt_suites | join(' ') }} {{ unifi_apt_components | join(' ') }}
+    state: present
+    filename: 100-ubnt-unifi
+
+- name: 'install unifi packages'
+  apt:
+    state: present
+    name: "{{ unifi_packages_base + unifi_packages_controller + unifi_packages_extra }}"

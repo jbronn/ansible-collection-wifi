@@ -1,0 +1,35 @@
+---
+- name: 'configure mongodb 3.6 apt repository gpg key'
+  copy:
+    src: mongodb-org-3.6.gpg
+    dest: /etc/apt/trusted.gpg.d/mongodb-org-3.6.gpg
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: 'configure mongodb 3.6 apt repository'
+  apt_repository:
+    repo: |
+      deb http://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/3.6 multiverse
+    state: present
+    filename: mongodb-org-3.6
+    mode: '0644'
+
+- name: 'download omada deb'
+  get_url:
+    url: "{{ omada_deb_url }}"
+    dest: "/var/cache/{{ omada_deb_basename }}"
+    checksum: "{{ omada_deb_checksum }}"
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: 'install omada packages'
+  apt:
+    name: "{{ omada_packages }}"
+    state: present
+
+- name: 'install omada deb'
+  apt:
+    deb: "/var/cache/{{ omada_deb_basename }}"
+    state: present

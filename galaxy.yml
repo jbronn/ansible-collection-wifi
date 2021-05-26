@@ -1,0 +1,20 @@
+---
+namespace: jbronn
+name: wifi
+version: 0.1.0
+authors:
+  - Justin Bronn <jbronn@gmail.com>
+description: WiFi Controller Roles
+
+build_ignore: []
+dependencies: {}
+license_file: LICENSE
+readme: README.md
+tags:
+  - unifi
+  - omada
+
+repository: https://github.com/jbronn/ansible-collection-wifi
+documentation: https://github.com/jbronn/ansible-collection-wifi
+homepage: https://github.com/jbronn/ansible-collection-wifi
+issues: https://github.com/jbronn/ansible-collection-wifi/issues

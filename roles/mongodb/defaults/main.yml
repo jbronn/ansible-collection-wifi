@@ -1,0 +1,13 @@
+---
+mongodb_apt_uri: "http://repo.mongodb.org/apt/{{ ansible_distribution | lower }}"
+mongodb_apt_suites:
+  - "{{ 'bionic' if ansible_distribution == 'Ubuntu' else 'stretch' }}/mongodb-org/{{ mongodb_version }}"
+mongodb_apt_components:
+  - multiverse
+mongodb_packages:
+  - mongodb-server
+mongodb_service: mongodb
+mongodb_service_state: started
+mongodb_service_enabled: true
+# Use older version required by WiFi controllers, e.g., UniFi and Omada.
+mongodb_version: '3.6'

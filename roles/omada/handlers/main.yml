@@ -1,0 +1,9 @@
+---
+- name: 'restart omada'
+  service:
+    name: "{{ omada_service }}"
+    state: restarted
+  tags:
+    - omada
+    - omada-config
+  when: omada_service_state != 'stopped'

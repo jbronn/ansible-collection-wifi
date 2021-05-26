@@ -1,0 +1,60 @@
+---
+unifi_apt_components:
+  - ubiquiti
+unifi_apt_suites:
+  - stable
+unifi_apt_uri: http://dl.ubnt.com/unifi/debian
+unifi_beta: {}
+unifi_packages_base:
+  - haveged
+  - openjdk-8-jre-headless
+unifi_packages_controller:
+  - unifi
+unifi_packages_extra: []
+
+unifi_user: unifi
+unifi_group: "{{ unifi_user }}"
+
+unifi_service: unifi
+unifi_service_state: started
+unifi_service_enabled: true
+
+unifi_keystore: /var/lib/unifi/keystore
+
+unifi_api_port: 8443
+unifi_api_proto: tcp
+unifi_ap_edu_broadcast_port_range: '5656-5699'
+unifi_ap_edu_broadcast_proto: udp
+unifi_device_discovery_port: 10001
+unifi_device_discovery_proto: udp
+unifi_db_port: 27117
+unifi_db_proto: tcp
+unifi_http_portal_port: 8880
+unifi_http_portal_proto: tcp
+unifi_https_portal_port: 8843
+unifi_https_portal_proto: tcp
+unifi_inform_port: 8080
+unifi_inform_proto: tcp
+unifi_l2_discovery_port: 1900
+unifi_l2_discovery_proto: udp
+unifi_speed_test_port: 6789
+unifi_speed_test_proto: tcp
+unifi_stun_port: 3478
+unifi_stun_proto: udp
+
+unifi_firewalld_services:
+  unifi:
+    state: present
+    description: 'Enable this if you want to run a UniFi controller.'
+    short: 'UniFi Controller Service'
+    ports:
+      - "{{ unifi_speed_test_port }}/{{ unifi_speed_test_proto }}"
+      - "{{ unifi_inform_port }}/{{ unifi_inform_proto }}"
+      - "{{ unifi_api_port }}/{{ unifi_api_proto }}"
+      - "{{ unifi_https_portal_port }}/{{ unifi_https_portal_proto }}"
+      - "{{ unifi_http_portal_port }}/{{ unifi_http_portal_proto }}"
+      - "{{ unifi_db_port }}/{{ unifi_db_proto }}"
+      - "{{ unifi_l2_discovery_port }}/{{ unifi_l2_discovery_proto }}"
+      - "{{ unifi_stun_port }}/{{ unifi_stun_proto }}"
+      - "{{ unifi_ap_edu_broadcast_port_range }}/{{ unifi_ap_edu_broadcast_proto }}"
+      - "{{ unifi_device_discovery_port }}/{{ unifi_device_discovery_proto }}"
