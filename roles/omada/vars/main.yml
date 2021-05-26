@@ -1,0 +1,3 @@
+---
+mongodb_service_state: stopped
+mongodb_service_enabled: false
