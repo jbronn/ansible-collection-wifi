@@ -10,7 +10,7 @@
   tags:
     - unifi
     - unifi-install
-  when: ansible_os_family = 'Debian'
+  when: ansible_os_family == 'Debian'
 
 - name: 'configure unifi service'
   service:
