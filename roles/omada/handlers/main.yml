@@ -6,4 +6,6 @@
   tags:
     - omada
     - omada-config
-  when: omada_service_state != 'stopped'
+  when:
+    - ansible_virtualization_type != 'docker'
+    - omada_service_state != 'stopped'

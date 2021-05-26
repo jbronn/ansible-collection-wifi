@@ -10,7 +10,6 @@
     name: "{{ mongodb_service }}"
     state: "{{ mongodb_service_state }}"
     enabled: "{{ mongodb_service_enabled }}"
-  when:
-    - ansible_virtualization_type != 'docker'
+  when: ansible_virtualization_type != 'docker'
   tags:
     - mongodb

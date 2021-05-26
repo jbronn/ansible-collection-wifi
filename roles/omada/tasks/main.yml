@@ -12,3 +12,4 @@
     enabled: "{{ omada_service_enabled }}"
   tags:
     - omada
+  when: ansible_virtualization_type != 'docker'

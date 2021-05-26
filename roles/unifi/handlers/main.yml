@@ -6,3 +6,6 @@
   tags:
     - unifi
     - unifi-config
+  when:
+    - ansible_virtualization_type != 'docker'
+    - unifi_service_state != 'stopped'
