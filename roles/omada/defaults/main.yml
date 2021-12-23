@@ -1,6 +1,18 @@
 ---
-omada_version: 4.3.5
+omada_version: 4.4.8
 omada_version_defaults:
+  4.4.8:
+    base_path: upload/software/2021/202112/20211217
+    deb_checksum: f8aebd9125cacbf6b8c82068a2b4e897fb67f0abec38cdcfdbeaa50ccabbc489
+    tar_checksum: 4b35a562bc5894a359fb7111ef92d352328489148b53451daaaaf6e6717589eb
+  4.4.6:
+    base_path: upload/software/2021/202110/20211011
+    deb_checksum: ec2b55c86443ebe63aa8c1f82831c8d8b7d3126985cebbeb6f433bba50d0558f
+    tar_checksum: be3ebc1ced254560e21945303df99bdfa1e49a4448311297db0f34de746ba0bf
+  4.4.3:
+    base_path: software/2021/202107/20210701
+    deb_checksum: 44ff3f22c649829652d4ca26ef581b3f355d2920a9a9112f4b1320e300bf1905
+    tar_checksum: 882a17b6eef60ac5c58d9522cbd3c94bef15920b3d872dc89244e55322ab43cd
   4.3.5:
     base_path: 2021/202105/20210507
     deb_checksum: 918a065b71f312fb3ecd85fea94ccfa8079f42f54a113a8187976625d79b7459
