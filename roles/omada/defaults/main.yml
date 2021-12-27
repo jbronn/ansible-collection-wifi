@@ -4,6 +4,7 @@ omada_version_defaults:
   4.4.8:
     base_path: upload/software/2021/202112/20211217
     deb_checksum: f8aebd9125cacbf6b8c82068a2b4e897fb67f0abec38cdcfdbeaa50ccabbc489
+    deb_platform: Linux
     tar_checksum: 4b35a562bc5894a359fb7111ef92d352328489148b53451daaaaf6e6717589eb
   4.4.6:
     base_path: upload/software/2021/202110/20211011
@@ -25,12 +26,13 @@ omada_version_defaults:
 omada_arch: x64
 omada_base_url: https://static.tp-link.com
 omada_base_path: "{{ omada_version_defaults[omada_version].base_path }}"
-omada_basename: "Omada_SDN_Controller_v{{ omada_version }}_linux_{{ omada_arch }}"
-omada_deb_basename: "Omada_SDN_Controller_v{{ omada_version }}_linux_{{ omada_arch }}.deb"
+omada_deb_basename: "Omada_SDN_Controller_v{{ omada_version }}_{{ omada_deb_platform }}_{{ omada_arch }}.deb"
 omada_deb_checksum: "sha256:{{ omada_version_defaults[omada_version].deb_checksum }}"
+omada_deb_platform: "{{ omada_version_defaults[omada_version].deb_platform | default('linux') }}"
 omada_deb_url: "{{ omada_base_url }}/{{ omada_base_path }}/{{ omada_deb_basename }}"
-omada_tar_basename: "{{ omada_basename }}.tar.gz"
+omada_tar_basename: "Omada_SDN_Controller_v{{ omada_version }}_{{ omada_platform }}_{{ omada_arch }}.tar.gz"
 omada_tar_checksum: "sha256:{{ omada_version_defaults[omada_version].tar_checksum }}"
+omada_tar_platform: "{{ omada_version_defaults[omada_version].tar_platform | default('linux') }}"
 omada_tar_url: "{{ omada_base_url }}/{{ omada_base_path }}/{{ omada_tar_basename }}"
 
 omada_root: /opt/tplink/EAPController
