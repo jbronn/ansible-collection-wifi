@@ -1,26 +1,33 @@
 ---
-omada_version: 4.4.8
+omada_version: 5.0.29
 omada_version_defaults:
+  5.0.29:
+    base_path: upload/software/2022/202201/20220107
+    deb_checksum: 8ad35c3fcb6d9fb7f9e9be6f25937cd3813a50615f0958f99242619944f37734
+    tar_checksum: cc729ab2cdd7e0b3e340913f16b9ac551fa733cb644842d976290ee77b08b9bd
   4.4.8:
     base_path: upload/software/2021/202112/20211217
     deb_checksum: f8aebd9125cacbf6b8c82068a2b4e897fb67f0abec38cdcfdbeaa50ccabbc489
-    deb_platform: Linux
     tar_checksum: 4b35a562bc5894a359fb7111ef92d352328489148b53451daaaaf6e6717589eb
   4.4.6:
     base_path: upload/software/2021/202110/20211011
     deb_checksum: ec2b55c86443ebe63aa8c1f82831c8d8b7d3126985cebbeb6f433bba50d0558f
+    deb_platform: linux
     tar_checksum: be3ebc1ced254560e21945303df99bdfa1e49a4448311297db0f34de746ba0bf
   4.4.3:
     base_path: software/2021/202107/20210701
     deb_checksum: 44ff3f22c649829652d4ca26ef581b3f355d2920a9a9112f4b1320e300bf1905
+    deb_platform: linux
     tar_checksum: 882a17b6eef60ac5c58d9522cbd3c94bef15920b3d872dc89244e55322ab43cd
   4.3.5:
     base_path: 2021/202105/20210507
     deb_checksum: 918a065b71f312fb3ecd85fea94ccfa8079f42f54a113a8187976625d79b7459
+    deb_platform: linux
     tar_checksum: c805cb0ff031b01c7af646a279cd6bb3df4617afbae5fa5eee9afcf6f9d2dd46
   4.2.11:
     base_path: 2021/202102/20210209
     deb_checksum: ee09d614ccb9ef6305732fc9184bf10ca65bd5e3d02c04e6f3ba679d0cedf261
+    deb_platform: linux
     tar_checksum: 22245035b9ff9684d571a6c75b63171a5fc1a777515f1264ee187d8b8abd5199
 
 omada_arch: x64
@@ -28,7 +35,7 @@ omada_base_url: https://static.tp-link.com
 omada_base_path: "{{ omada_version_defaults[omada_version].base_path }}"
 omada_deb_basename: "Omada_SDN_Controller_v{{ omada_version }}_{{ omada_deb_platform }}_{{ omada_arch }}.deb"
 omada_deb_checksum: "sha256:{{ omada_version_defaults[omada_version].deb_checksum }}"
-omada_deb_platform: "{{ omada_version_defaults[omada_version].deb_platform | default('linux') }}"
+omada_deb_platform: "{{ omada_version_defaults[omada_version].deb_platform | default('Linux') }}"
 omada_deb_url: "{{ omada_base_url }}/{{ omada_base_path }}/{{ omada_deb_basename }}"
 omada_tar_basename: "Omada_SDN_Controller_v{{ omada_version }}_{{ omada_platform }}_{{ omada_arch }}.tar.gz"
 omada_tar_checksum: "sha256:{{ omada_version_defaults[omada_version].tar_checksum }}"
