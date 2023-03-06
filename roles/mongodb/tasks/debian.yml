@@ -1,8 +1,8 @@
 ---
 - name: "configure mongodb {{ mongodb_version }} apt repository gpg key"
   copy:
-    src: "mongodb-org-{{ mongodb_version }}.gpg"
-    dest: "/etc/apt/trusted.gpg.d/mongodb-org-{{ mongodb_version }}.gpg"
+    src: "server-{{ mongodb_version }}.asc"
+    dest: "/etc/apt/trusted.gpg.d/mongodb-org-{{ mongodb_version }}.asc"
     owner: root
     group: root
     mode: '0644'
