@@ -47,7 +47,7 @@ omada_tar_platform: "{{ omada_version_defaults[omada_version].tar_platform | def
 omada_tar_url: "{{ omada_base_url }}/{{ omada_base_path }}/{{ omada_tar_basename }}"
 
 omada_root: /opt/tplink/EAPController
-omada_keystore_dir: "{{ omada_root }}/keystore"
+omada_keystore_dir: "{{ omada_root }}/data/keystore"
 omada_keystore_file: "{{ omada_keystore_dir }}/eap.keystore"
 omada_properties_dir: "{{ omada_root }}/properties"
 omada_config_file: "{{ omada_properties_dir }}/omada.properties"
