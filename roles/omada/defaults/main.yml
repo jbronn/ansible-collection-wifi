@@ -70,13 +70,10 @@ omada_service_enabled: true
 omada_mongodb_port: 27017
 omada_mongodb_proto: tcp
 omada_discover_port: 29810
-omada_discover_proto: udp
 omada_manage_port: 29811
-omada_manage_proto: tcp
 omada_adopt_port: 29812
-omada_adopt_proto: tcp
 omada_upgrade_port: 29813
-omada_upgrade_proto: tcp
+omada_upgrade2_port: 29814
 omada_http_port: 8088
 omada_http_proto: tcp
 omada_https_port: 8043
@@ -90,7 +87,13 @@ omada_firewalld_services:
     ports:
       - "{{ omada_http_port }}/{{ omada_http_proto }}"
       - "{{ omada_https_port }}/{{ omada_https_proto }}"
-      - "{{ omada_discover_port }}/{{ omada_discover_proto }}"
-      - "{{ omada_manage_port }}/{{ omada_manage_proto }}"
-      - "{{ omada_adopt_port }}/{{ omada_adopt_proto }}"
-      - "{{ omada_upgrade_port }}/{{ omada_upgrade_proto }}"
+      - "{{ omada_discover_port }}/tcp"
+      - "{{ omada_discover_port }}/udp"
+      - "{{ omada_manage_port }}/tcp"
+      - "{{ omada_manage_port }}/udp"
+      - "{{ omada_adopt_port }}/tcp"
+      - "{{ omada_adopt_port }}/udp"
+      - "{{ omada_upgrade_port }}/tcp"
+      - "{{ omada_upgrade_port }}/udp"
+      - "{{ omada_upgrade2_port }}/tcp"
+      - "{{ omada_upgrade2_port }}/udp"
