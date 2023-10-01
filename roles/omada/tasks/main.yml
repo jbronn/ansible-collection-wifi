@@ -1,11 +1,11 @@
 ---
-- name: 'install omada packages'
+- name: install omada packages
   import_tasks: install.yml
   tags:
     - omada
     - omada-install
 
-- name: 'configure omada service'
+- name: configure omada service
   service:
     name: "{{ omada_service }}"
     state: "{{ omada_service_state }}"
