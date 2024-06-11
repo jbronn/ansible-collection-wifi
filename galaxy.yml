@@ -1,7 +1,7 @@
 ---
 namespace: jbronn
 name: wifi
-version: 0.1.0
+version: 0.5.0
 authors:
   - Justin Bronn <jbronn@gmail.com>
 description: WiFi Controller Roles
