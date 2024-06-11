@@ -1,8 +1,8 @@
 ---
-- name: "configure mongodb {{ mongodb_version }} apt repository gpg key"
+- name: "configure mongodb {{ mongodb_version }} apt keyring"
   copy:
     src: "server-{{ mongodb_version }}.asc"
-    dest: "/etc/apt/trusted.gpg.d/mongodb-org-{{ mongodb_version }}.asc"
+    dest: "{{ mongodb_apt_keyring }}"
     owner: root
     group: root
     mode: '0644'
@@ -10,12 +10,29 @@
 - name: "configure mongodb {{ mongodb_version }} apt repository"
   apt_repository:
     repo: |
-      deb {{ mongodb_apt_uri }} {{ mongodb_apt_suites | join(' ') }} {{ mongodb_apt_components | join(' ') }}
+      deb [signed-by={{ mongodb_apt_keyring }}] {{ mongodb_apt_uri }} {{ mongodb_apt_suites | join(' ') }} {{ mongodb_apt_components | join(' ') }}
     state: present
     filename: "mongodb-org-{{ mongodb_version }}"
     mode: '0644'
 
-- name: 'install mongodb'
+- block:
+    - name: copy legacy libssl package for mongo 4.4
+      copy:
+        src: libssl1.1_1.1.1f-1ubuntu2.22_amd64.deb
+        dest: /var/cache/libssl1.1_1.1.1f-1ubuntu2.22_amd64.deb
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: install legacy libssl package for mongo 4.4
+      apt:
+        deb: /var/cache/libssl1.1_1.1.1f-1ubuntu2.22_amd64.deb
+        state: present
+  when:
+    - ansible_facts['distribution_version'] is version('20.04', '>=')
+    - mongodb_version == '4.4'
+
+- name: install mongodb
   apt:
     name: "{{ mongodb_packages }}"
     state: present

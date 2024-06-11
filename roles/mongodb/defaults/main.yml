@@ -1,7 +1,8 @@
 ---
+mongodb_apt_keyring: "/etc/apt/keyrings/mongodb-org-{{ mongodb_version }}.asc"
 mongodb_apt_uri: "http://repo.mongodb.org/apt/{{ ansible_distribution | lower }}"
 mongodb_apt_suites:
-  - "{{ ansible_distribution_release }}/mongodb-org/{{ mongodb_version }}"
+  - "focal/mongodb-org/{{ mongodb_version }}"
 mongodb_apt_components:
   - multiverse
 mongodb_packages:
