@@ -1,6 +1,9 @@
 ---
-omada_version: 5.14.32.2
+omada_version: 5.14.32.3
 omada_version_defaults:
+  5.14.32.3:
+    base_path: upload/software/2024/202411/20241101
+    deb_checksum: 934b34dac9469307dee37e10edd9707595171d65bc2db114002a18f38bf48899
   5.14.32.2:
     base_path: upload/software/2024/202410/20241015
     deb_checksum: e599a118cca45b26d6c9c889eefdf62c4fc2c2221140f3cbc53d6dc16f5ed233
