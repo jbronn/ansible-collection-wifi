@@ -1,37 +1,45 @@
 ---
-omada_version: 5.15.6.7
+omada_version: 5.15.24.18
 omada_version_defaults:
+  5.15.24.18:
+    base_path: 2025/202507/20250703
+    deb_checksum: 5e34f6a1f285e578c36995717aff3d11aeec24e6114469431dbe10c0aaebb637
+    deb_suffix: 20250630184434
   5.15.6.7:
-    base_path: upload/software/2024/202412/20241224
+    base_path: 2024/202412/20241224
     deb_checksum: 0d288193340847051bea93c2d1c2ea00746d945666348bb36867e11b67154fc8
+    deb_prefix: Omada_SDN_Controller
   5.14.32.3:
-    base_path: upload/software/2024/202411/20241101
+    base_path: 2024/202411/20241101
     deb_checksum: 934b34dac9469307dee37e10edd9707595171d65bc2db114002a18f38bf48899
+    deb_prefix: Omada_SDN_Controller
   5.14.32.2:
-    base_path: upload/software/2024/202410/20241015
+    base_path: 2024/202410/20241015
     deb_checksum: e599a118cca45b26d6c9c889eefdf62c4fc2c2221140f3cbc53d6dc16f5ed233
+    deb_prefix: Omada_SDN_Controller
   5.14.26.1:
-    base_path: upload/software/2024/202407/20240710
+    base_path: 2024/202407/20240710
     deb_checksum: dcb118191afbec7724c556c0a82d2482ab689e8c485204517295e72ae724d345
+    deb_prefix: Omada_SDN_Controller
   5.13.30.8:
-    base_path: upload/software/2024/202402/20240227
+    base_path: 2024/202402/20240227
     deb_checksum: 94d68a27b81c8ddacf307eeba7c632a09277e233a8c4721ba1efb34b3853083d
+    deb_prefix: Omada_SDN_Controller
   5.12.7:
-    base_path: upload/software/2023/202309/20230920
+    base_path: 2023/202309/20230920
     deb_checksum: 28a004ae360d68de463265b65b7335124fcf6be99f02e69047c2644f4c678aa0
     deb_platform: Linux
+    deb_prefix: Omada_SDN_Controller
 
 omada_arch: x64
-omada_base_url: https://static.tp-link.com
+omada_base_url: https://static.tp-link.com/upload/software
 omada_base_path: "{{ omada_version_defaults[omada_version].base_path }}"
-omada_deb_basename: "Omada_SDN_Controller_v{{ omada_version }}_{{ omada_deb_platform }}_{{ omada_arch }}.deb"
+omada_deb_basename: "{{ omada_deb_prefix }}_v{{ omada_version }}_{{ omada_deb_platform }}_{{ omada_arch }}{% if omada_deb_suffix %}_{{ omada_deb_suffix }}{% endif %}.deb"
 omada_deb_checksum: "sha256:{{ omada_version_defaults[omada_version].deb_checksum }}"
 omada_deb_platform: "{{ omada_version_defaults[omada_version].deb_platform | default('linux') }}"
+omada_deb_prefix: "{{ omada_version_defaults[omada_version].deb_prefix | default('omada') }}"
+omada_deb_suffix: "{{ omada_version_defaults[omada_version].deb_suffix | default('') }}"
 omada_deb_url: "{{ omada_base_url }}/{{ omada_base_path }}/{{ omada_deb_basename }}"
-omada_tar_basename: "Omada_SDN_Controller_v{{ omada_version }}_{{ omada_platform }}_{{ omada_arch }}.tar.gz"
-omada_tar_checksum: "sha256:{{ omada_version_defaults[omada_version].tar_checksum }}"
-omada_tar_platform: "{{ omada_version_defaults[omada_version].tar_platform | default('linux') }}"
-omada_tar_url: "{{ omada_base_url }}/{{ omada_base_path }}/{{ omada_tar_basename }}"
 
 omada_root: /opt/tplink/EAPController
 omada_keystore_dir: "{{ omada_root }}/data/keystore"
