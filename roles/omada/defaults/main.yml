@@ -62,33 +62,42 @@ omada_service: tpeap
 omada_service_state: started
 omada_service_enabled: true
 
-omada_mongodb_port: 27017
-omada_mongodb_proto: tcp
-omada_discover_port: 29810
-omada_manage_port: 29811
-omada_adopt_port: 29812
-omada_upgrade_port: 29813
-omada_upgrade2_port: 29814
 omada_http_port: 8088
 omada_http_proto: tcp
 omada_https_port: 8043
 omada_https_proto: tcp
+omada_discover_port: 29810
+omada_discover_proto: udp
+omada_manage_port: 29811
+omada_manage_proto: tcp
+omada_adopt_port: 29812
+omada_adopt_proto: tcp
+omada_upgrade_port: 29813
+omada_upgrade_proto: tcp
+omada_upgrade2_port: 29814
+omada_upgrade2_proto: tcp
+omada_packet_port: 29815
+omada_packet_proto: tcp
+omada_terminal_port: 29816
+omada_terminal_proto: tcp
+omada_initialization_port: 27001
+omada_initialization_proto: udp
+omada_mongodb_port: 27017
+omada_mongodb_proto: tcp
 
 omada_firewalld_services:
   omada:
     state: present
-    description: 'Enable this if you want to run a Omada SDN Controller.'
-    short: 'Omada SDN Controller Service'
+    description: Enable this if you want to run a Omada SDN Controller.
+    short: Omada SDN Controller Service
     ports:
       - "{{ omada_http_port }}/{{ omada_http_proto }}"
       - "{{ omada_https_port }}/{{ omada_https_proto }}"
-      - "{{ omada_discover_port }}/tcp"
-      - "{{ omada_discover_port }}/udp"
-      - "{{ omada_manage_port }}/tcp"
-      - "{{ omada_manage_port }}/udp"
-      - "{{ omada_adopt_port }}/tcp"
-      - "{{ omada_adopt_port }}/udp"
-      - "{{ omada_upgrade_port }}/tcp"
-      - "{{ omada_upgrade_port }}/udp"
-      - "{{ omada_upgrade2_port }}/tcp"
-      - "{{ omada_upgrade2_port }}/udp"
+      - "{{ omada_discover_port }}/{{ omada_discover_proto }}"
+      - "{{ omada_manage_port }}/{{ omada_manage_proto }}"
+      - "{{ omada_adopt_port }}/{{ omada_adopt_proto }}"
+      - "{{ omada_upgrade_port }}/{{ omada_upgrade_proto }}"
+      - "{{ omada_upgrade2_port }}/{{ omada_upgrade2_proto }}"
+      - "{{ omada_packet_port }}/{{ omada_packet_proto }}"
+      - "{{ omada_terminal_port }}/{{ omada_terminal_proto }}"
+      - "{{ omada_initialization_port }}/{{ omada_initialization_proto }}"
