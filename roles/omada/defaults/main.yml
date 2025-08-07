@@ -1,6 +1,10 @@
 ---
-omada_version: 5.15.24.18
+omada_version: 5.15.24.19
 omada_version_defaults:
+  5.15.24.19:
+    base_path: 2025/202508/20250802
+    deb_checksum: e38e59fb429f4b33727679f3032abcb2b4308d93191429691317b4d26f65f525
+    deb_suffix: 20250724152622
   5.15.24.18:
     base_path: 2025/202507/20250703
     deb_checksum: 5e34f6a1f285e578c36995717aff3d11aeec24e6114469431dbe10c0aaebb637
