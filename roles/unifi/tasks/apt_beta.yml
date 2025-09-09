@@ -1,6 +1,6 @@
 ---
-- name: 'download beta unifi software'
-  get_url:
+- name: download beta unifi software
+  ansible.builtin.get_url:
     url: "{{ unifi_beta.base_url | default('https://dl.ui.com/unifi') }}/{{ unifi_beta.version }}/unifi_sysvinit_all.deb"
     dest: "/var/cache/unifi_sysvinit_all-{{ unifi_beta.version }}.deb"
     checksum: "{{ unifi_beta.checksum }}"
@@ -8,12 +8,12 @@
     group: root
     mode: '0644'
 
-- name: 'install unifi base packages'
-  apt:
+- name: install unifi base packages
+  ansible.builtin.apt:
     state: present
     name: "{{ unifi_packages_base }}"
 
-- name: 'install unifi beta controller package'
-  apt:
+- name: install unifi beta controller package
+  ansible.builtin.apt:
     state: present
     deb: "/var/cache/unifi_sysvinit_all-{{ unifi_beta.version }}.deb"

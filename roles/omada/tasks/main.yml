@@ -1,12 +1,12 @@
 ---
 - name: install omada packages
-  import_tasks: install.yml
+  ansible.builtin.import_tasks: install.yml
   tags:
     - omada
     - omada-install
 
 - name: configure omada service
-  service:
+  ansible.builtin.service:
     name: "{{ omada_service }}"
     state: "{{ omada_service_state }}"
     enabled: "{{ omada_service_enabled }}"

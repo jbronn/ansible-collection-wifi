@@ -1,6 +1,6 @@
 ---
-- name: 'restart unifi'
-  service:
+- name: restart unifi
+  ansible.builtin.service:
     name: "{{ unifi_service }}"
     state: restarted
   tags:

@@ -1,11 +1,11 @@
 ---
-- name: 'install mongodb on debian platforms'
+- name: install mongodb on debian platforms
   import_tasks: debian.yml
   tags:
     - mongodb
   when: ansible_os_family == 'Debian'
 
-- name: 'configure mongodb service'
+- name: configure mongodb service
   service:
     name: "{{ mongodb_service }}"
     state: "{{ mongodb_service_state }}"

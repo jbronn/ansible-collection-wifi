@@ -1,13 +1,13 @@
 ---
+mongodb_apt_arch: amd64
+mongodb_apt_components: multiverse
 mongodb_apt_keyring: "/etc/apt/keyrings/mongodb-org-{{ mongodb_version }}.asc"
+mongodb_apt_sources: "/etc/apt/sources.list.d/mongodb-org-{{ mongodb_version }}.sources"
+mongodb_apt_suites: "{{ ansible_distribution_release | lower }}/mongodb-org/{{ mongodb_version }}"
 mongodb_apt_uri: "http://repo.mongodb.org/apt/{{ ansible_distribution | lower }}"
-mongodb_apt_suites:
-  - "focal/mongodb-org/{{ mongodb_version }}"
-mongodb_apt_components:
-  - multiverse
 mongodb_packages:
   - mongodb-org-server
 mongodb_service: mongod
 mongodb_service_state: started
 mongodb_service_enabled: true
-mongodb_version: '4.4'
+mongodb_version: '8.0'

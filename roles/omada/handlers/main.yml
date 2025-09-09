@@ -1,6 +1,6 @@
 ---
-- name: 'restart omada'
-  service:
+- name: restart omada
+  ansible.builtin.service:
     name: "{{ omada_service }}"
     state: restarted
   tags:

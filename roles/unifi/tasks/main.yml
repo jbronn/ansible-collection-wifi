@@ -1,19 +1,19 @@
 ---
 - block:
-    - name: 'install unifi beta via apt'
-      import_tasks: apt_beta.yml
+    - name: install unifi beta via apt
+      ansible.builtin.import_tasks: apt_beta.yml
       when: unifi_beta | count > 1
 
-    - name: 'install unifi release via apt'
-      import_tasks: apt_release.yml
+    - name: install unifi release via apt
+      ansible.builtin.import_tasks: apt_release.yml
       when: unifi_beta | count <= 1
   tags:
     - unifi
     - unifi-install
   when: ansible_os_family == 'Debian'
 
-- name: 'configure unifi service'
-  service:
+- name: configure unifi service
+  ansible.builtin.service:
     name: "{{ unifi_service }}"
     state: "{{ unifi_service_state }}"
     enabled: "{{ unifi_service_enabled }}"
