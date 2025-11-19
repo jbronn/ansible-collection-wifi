@@ -88,6 +88,8 @@ omada_packet_port: 29815
 omada_packet_proto: tcp
 omada_terminal_port: 29816
 omada_terminal_proto: tcp
+omada_monitoring_port: 29817
+omada_monitoring_proto: tcp
 omada_initialization_port: 27001
 omada_initialization_proto: udp
 omada_mongodb_port: 27017
@@ -108,4 +110,5 @@ omada_firewalld_services:
       - "{{ omada_upgrade2_port }}/{{ omada_upgrade2_proto }}"
       - "{{ omada_packet_port }}/{{ omada_packet_proto }}"
       - "{{ omada_terminal_port }}/{{ omada_terminal_proto }}"
+      - "{{ omada_monitoring_port }}/{{ omada_monitoring_proto }}"
       - "{{ omada_initialization_port }}/{{ omada_initialization_proto }}"
