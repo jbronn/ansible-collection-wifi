@@ -1,6 +1,11 @@
 ---
-omada_version: 6.2.0.17
+omada_version: 6.2.10.17
 omada_version_defaults:
+  6.2.10.17:
+    base_path: 2026/202604/20260429
+    deb_checksum: 4a8d3542ef28eaca22e62cc857a7b08a8ef4269d890d6a013dc948d03cdc4f33
+    deb_prefix: Omada_Network_Application
+    deb_suffix: 20260428102045
   6.2.0.17:
     base_path: 2026/202604/20260402
     deb_checksum: a53d10abcf600ef0e7d73ca45c18c7348d526527c1dc07f9e2592c8773e6c77e
