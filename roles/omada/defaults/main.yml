@@ -1,6 +1,10 @@
 ---
-omada_version: 6.2.10.17
+omada_version: 6.2.14.11
 omada_version_defaults:
+  6.2.14.11:
+    base_path: 2026/202607/20260717
+    deb_checksum: 0c12765f53208a4c40ba882b86a6cd62190aa32c95f407991e1c227479c9e06f
+    deb_prefix: Omada_SDN_Controller
   6.2.10.17:
     base_path: 2026/202604/20260429
     deb_checksum: 4a8d3542ef28eaca22e62cc857a7b08a8ef4269d890d6a013dc948d03cdc4f33
