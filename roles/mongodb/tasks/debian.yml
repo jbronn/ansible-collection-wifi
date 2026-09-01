@@ -14,7 +14,6 @@
       URIs: {{ mongodb_apt_uri }}
       Suites: {{ mongodb_apt_suites }}
       Components: {{ mongodb_apt_components }}
-      Architectures: {{ mongodb_apt_arch }}
       Signed-By: {{ mongodb_apt_keyring }}
     dest: "{{ mongodb_apt_sources }}"
     owner: root
