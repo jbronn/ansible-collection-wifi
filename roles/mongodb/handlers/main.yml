@@ -6,5 +6,5 @@
   tags:
     - mongodb
   when:
-    - ansible_virtualization_type != 'docker'
+    - ansible_facts.virtualization_type != 'docker'
     - mongodb_service_state != 'stopped'

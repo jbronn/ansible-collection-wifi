@@ -7,5 +7,5 @@
     - omada
     - omada-config
   when:
-    - ansible_virtualization_type != 'docker'
+    - ansible_facts.virtualization_type != 'docker'
     - omada_service_state != 'stopped'
